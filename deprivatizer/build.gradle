@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+/*
+def jdkHome = System.getenv("JAVA_HOME")
+dependencies {
+    compile files("$jdkHome/lib/tools.jar")
+}
+*/
+
+dependencies {
+  compile files("${System.getProperty('java.home')}/../lib/tools.jar")
+}
+
