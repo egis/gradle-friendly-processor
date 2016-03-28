@@ -3,9 +3,20 @@
 Compile and pack the plugin:
 
 ```sh
-javac -cp $JAVA_HOME/lib/tools.jar -sourcepath src/main/java -d jar src/main/java/com/example/deprivatizer/Deprivatizer.java
+gradle build
+```
+
+Compile and pack the plugin without gradle:
+
+```sh
+
+# first delete .DS_Store files if you're on a Mac
 find . -name .DS_Store -delete
-jar cfM deprivatizer.jar -C jar .
+
+mkdir jar
+cp -r src/main/resources/META-INF jar
+javac -cp $JAVA_HOME/lib/tools.jar -sourcepath src/main/java -d jar src/main/java/com/example/deprivatizer/Deprivatizer.java
+jar cf deprivatizer.jar -C jar .
 ```
 
 Use the plugin during compilation:
