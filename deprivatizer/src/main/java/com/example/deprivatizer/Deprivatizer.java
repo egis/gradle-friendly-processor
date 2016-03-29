@@ -37,7 +37,7 @@ public class Deprivatizer extends AbstractProcessor
   @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv)
   {
-    if (trees == null) return false;
+    if (trees == null) return false; // TODO: log warning?
 
     for (Element root: roundEnv.getRootElements()) process(root);
 
@@ -47,13 +47,13 @@ public class Deprivatizer extends AbstractProcessor
   private void process(Element element)
   {
     TreePath path = trees.getPath(element);
-    if (path == null) return;
+    if (path == null) return; // TODO: log warning?
 
     CompilationUnitTree unit = path.getCompilationUnit();
-    if (unit == null) return;
+    if (unit == null) return; // TODO: log warning?
 
     JavaFileObject file = unit.getSourceFile();
-    if (file.getKind() != JavaFileObject.Kind.SOURCE) return;
+    if (file.getKind() != JavaFileObject.Kind.SOURCE) return; // TODO: log warning?
 
     if (! processed.add(file)) return;
 
