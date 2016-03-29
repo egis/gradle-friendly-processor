@@ -1,6 +1,7 @@
 package com.example.deprivatizer;
 
 import java.util.Set;
+import java.util.HashSet;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
@@ -23,10 +24,13 @@ public class Deprivatizer extends AbstractProcessor
 {
   private Trees trees;
 
+  private final Set<JavaFileObject> processed = new HashSet<>();
+
   @Override
   public void init(ProcessingEnvironment processingEnv)
   {
     super.init(processingEnv);
+
     trees = Trees.instance(processingEnv);
   }
   
@@ -35,15 +39,25 @@ public class Deprivatizer extends AbstractProcessor
   {
     if (trees == null) return false;
 
-    for (Element element: roundEnv.getRootElements()) {
-      TreePath path = trees.getPath(element);
-      CompilationUnitTree unit = path == null ? null : path.getCompilationUnit();
-      if (unit == null || unit.getSourceFile().getKind() != JavaFileObject.Kind.SOURCE) continue;
+    for (Element root: roundEnv.getRootElements()) process(root);
 
-      unit.accept(new DeprivatizeVisitor(), null);
-    }
+    return false;
+  }
 
-    return true; // TODO: false?
+  private void process(Element element)
+  {
+    TreePath path = trees.getPath(element);
+    if (path == null) return;
+
+    CompilationUnitTree unit = path.getCompilationUnit();
+    if (unit == null) return;
+
+    JavaFileObject file = unit.getSourceFile();
+    if (file.getKind() != JavaFileObject.Kind.SOURCE) return;
+
+    if (! processed.add(file)) return;
+
+    unit.accept(new DeprivatizeVisitor(), null);
   }
 
 }
@@ -53,6 +67,7 @@ class DeprivatizeVisitor extends TreeScanner<Void, Void>
   public Void visitVariable(VariableTree node, Void p)
   {
     ((com.sun.tools.javac.tree.JCTree.JCVariableDecl)node).mods.flags &= ~com.sun.tools.javac.code.Flags.PRIVATE;
+
     return super.visitVariable(node, p);
   }
 }
