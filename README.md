@@ -73,6 +73,6 @@ Run `deprivatizer-test` with shell and JDK tools:
 ```sh
 cd deprivatizer-test
 mkdir -p build/classes/main
-javac -encoding UTF-8 -cp ../deprivatizer/build/libs/deprivatizer.jar -d build/classes/main src/main/java/Test.java
+javac -encoding UTF-8 -processorpath ../deprivatizer/build/libs/deprivatizer.jar -d build/classes/main src/main/java/Test.java
 java -cp build/classes/main Test
 ```
