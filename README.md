@@ -60,7 +60,7 @@ Compile and pack `deprivatizer` with shell and JDK tools:
 find . -name .DS_Store -delete
 ```
 
-```
+```sh
 cd deprivatizer
 mkdir -p build/jar
 cp -r src/main/resources/META-INF build/jar
