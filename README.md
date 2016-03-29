@@ -14,6 +14,12 @@ dependencies {
 }
 ```
 
+Compile and pack the plugin with Ant:
+```sh
+cd deprivatizer
+ant
+```
+
 Compile and pack the plugin only with shell and JDK tools:
 
 ```sh
