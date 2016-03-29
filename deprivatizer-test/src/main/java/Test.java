@@ -1,24 +1,31 @@
-import java.lang.reflect.Modifier;
 
 public class Test
 {
-  private static final String TEST = "TEST WORKED";
-
   public static void main(String[] args) throws Exception
   {
-    System.out.println(Private.PRIVATE);
-    Private.printTest();
-    System.out.println(Modifier.toString(Private.class.getDeclaredField("PRIVATE").getModifiers()));
-    System.out.println(Modifier.toString(Test.class.getDeclaredField("TEST").getModifiers()));
+    Alice.test();
+    Bob.test();
   }
 }
 
-class Private
+class Alice
 {
-  private static final String PRIVATE = Test.TEST;
+  private static final String ALICE = "Alice.ALICE";
 
-  public static void printTest()
+  public static void test() throws Exception
   {
-    System.out.println(Test.TEST);
+    System.out.println(Bob.BOB+" isn't private");
+    System.out.println(Bob.class.getDeclaredField("BOB"));
+  }
+}
+
+class Bob
+{
+  private static final String BOB = "Bob.BOB";
+
+  public static void test() throws Exception
+  {
+    System.out.println(Alice.ALICE+" isn't private");
+    System.out.println(Alice.class.getDeclaredField("ALICE"));
   }
 }
