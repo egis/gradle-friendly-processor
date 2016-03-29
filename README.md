@@ -26,6 +26,13 @@ cd deprivatizer
 ant
 ```
 
+Run ```deprivatizer-test``` with Ant:
+
+```sh
+cd deprivatizer-test
+ant
+```
+
 Compile and pack the plugin only with shell and JDK tools:
 
 ```sh
