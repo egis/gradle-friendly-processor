@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="deprivatizer" default="jar" basedir=".">
+
+  <!-- Note: This project uses Gradle's default folder structure. -->
+
+  <property name="classes" location="build/classes/main" />
+  <property name="libs" location="build/libs" />
+
+  <target name="clean">
+    <delete dir="build" />
+  </target>
+
+  <target name="init">
+    <mkdir dir="${classes}" />
+    <mkdir dir="${libs}" />
+  </target>
+
+  <target name="compile" depends="init">
+    <!-- It is recommended to set includeantruntime=false. We use tools.jar instead. -->
+    <javac srcdir="src/main/java" destdir="${classes}" includeantruntime="false">
+      <classpath location="${java.home}/../lib/tools.jar" />
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="${libs}/deprivatizer.jar">
+      <fileset dir="${classes}" />
+      <!-- We can use either Ant's <service> or the stuff in src/main/resources we need for Gradle. -->
+      <!-- fileset dir="src/main/resources" /-->
+      <service type="javax.annotation.processing.Processor" provider="com.example.deprivatizer.Deprivatizer" />
+      </jar>
+  </target>
+
+</project>
