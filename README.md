@@ -64,7 +64,7 @@ find . -name .DS_Store -delete
 cd deprivatizer
 mkdir -p build/jar
 cp -r src/main/resources/META-INF build/jar
-javac -cp "$JAVA_HOME/lib/tools.jar" -sourcepath src/main/java -d build/jar src/main/java/com/egis/deprivatizer/Deprivatizer.java
+javac -cp "$JAVA_HOME/lib/tools.jar" -d build/jar src/main/java/com/egis/deprivatizer/Deprivatizer.java
 jar cf build/libs/deprivatizer.jar -C build/jar .
 ```
 
@@ -73,6 +73,6 @@ Run `deprivatizer-test` with shell and JDK tools:
 ```sh
 cd deprivatizer-test
 mkdir -p build/classes/main
-javac -cp ../deprivatizer/build/libs/deprivatizer.jar -sourcepath src/main/java -d build/classes/main src/main/java/Test.java
+javac -cp ../deprivatizer/build/libs/deprivatizer.jar -d build/classes/main src/main/java/Test.java
 java -cp build/classes/main Test
 ```
