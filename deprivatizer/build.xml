@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="deprivatizer" default="jar" basedir=".">
+<project name="deprivatizer" default="jar">
 
   <!-- Note: This project uses Gradle's default folder structure. -->
 
@@ -25,7 +25,7 @@
   <target name="jar" depends="compile">
     <jar destfile="${libs}/deprivatizer.jar">
       <fileset dir="${classes}" />
-      <!-- We can use either Ant's <service> or the stuff in src/main/resources we need for Gradle. -->
+      <!-- We can use either Ant's <service> or the file in src/main/resources we need for Gradle. -->
       <!-- fileset dir="src/main/resources" /-->
       <service type="javax.annotation.processing.Processor" provider="com.example.deprivatizer.Deprivatizer" />
       </jar>
