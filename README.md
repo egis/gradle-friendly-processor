@@ -1,6 +1,10 @@
 **Deprivatizer** is a simple Java compiler plugin that makes all private fields package-private so [ReflectASM](/EsotericSoftware/reflectasm) can access them.
 
----
+1. [Gradle](#gradle)
+2. [Ant](#ant)
+3. [Shell](#shell)
+
+## Gradle
 
 Compile and pack ```deprivatizer``` with Gradle:
 
@@ -24,7 +28,7 @@ dependencies {
 
 Alternatively, publish ```deprivatizer.jar``` to a repository and add the appropriate dependency to ```build.gradle```.
 
----
+## Ant
 
 Compile and pack ```deprivatizer``` with Ant:
 ```sh
@@ -47,7 +51,7 @@ To use the plugin with other Ant projects, copy ```deprivatizer.jar``` to a conv
 </javac>
 ```
 
----
+## Shell
 
 Compile and pack ```deprivatizer``` with shell and JDK tools:
 
