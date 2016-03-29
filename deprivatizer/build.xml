@@ -17,7 +17,7 @@
 
   <target name="compile" depends="init">
     <!-- It is recommended to set includeantruntime=false. We use tools.jar instead. -->
-    <javac srcdir="src/main/java" destdir="${classes}" includeantruntime="false">
+    <javac encoding="UTF-8" srcdir="src/main/java" destdir="${classes}" includeantruntime="false">
       <classpath location="${java.home}/../lib/tools.jar" />
     </javac>
   </target>

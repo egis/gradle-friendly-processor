@@ -14,7 +14,7 @@
   </target>
 
   <target name="compile" depends="init">
-    <javac srcdir="src/main/java" destdir="${classes}" includeantruntime="false">
+    <javac encoding="UTF-8" srcdir="src/main/java" destdir="${classes}" includeantruntime="false">
       <classpath location="../deprivatizer/build/libs/deprivatizer.jar" />
     </javac>
   </target>
