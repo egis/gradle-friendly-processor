@@ -14,13 +14,15 @@ Run ```deprivatizer-test``` with Gradle:
 gradle run
 ```
 
-To use the plugin with Gradle, make ```deprivatizer``` a sibling project and add the following to ```build.gradle``` of your project:
+To use the plugin with other Gradle projects, make ```deprivatizer``` a sibling project and add the following to ```build.gradle``` of your project:
 
 ```gradle
 dependencies {
   compile project(':deprivatizer')
 }
 ```
+
+Alternatively, publish ```deprivatizer.jar``` to a repository and add the appropriate dependency to ```build.gradle```.
 
 ---
 
@@ -37,7 +39,7 @@ cd deprivatizer-test
 ant
 ```
 
-To use the plugin with Ant, copy ```deprivatizer.jar``` to a convenient location and add it to the compiler classpath in ```build.xml``` of your project:
+To use the plugin with other Ant projects, copy ```deprivatizer.jar``` to a convenient location and add it to the compiler classpath in ```build.xml``` of your project:
 
 ```ant
 <javac ... >
@@ -59,7 +61,7 @@ cd deprivatizer
 mkdir -p build/jar
 cp -r src/main/resources/META-INF build/jar
 javac -cp "$JAVA_HOME/lib/tools.jar" -sourcepath src/main/java -d build/jar src/main/java/com/example/deprivatizer/Deprivatizer.java
-jar cf deprivatizer.jar -C build/jar .
+jar cf build/libs/deprivatizer.jar -C build/jar .
 ```
 
 Run ```deprivatizer-test``` with shell and JDK tools:
@@ -67,6 +69,6 @@ Run ```deprivatizer-test``` with shell and JDK tools:
 ```sh
 cd deprivatizer-test
 mkdir -p build/classes/main
-javac -cp ../deprivatizer/deprivatizer.jar -sourcepath src/main/java -d build/classes/main src/main/java/Test.java
+javac -cp ../deprivatizer/build/libs/deprivatizer.jar -sourcepath src/main/java -d build/classes/main src/main/java/Test.java
 java -cp build/classes/main Test
 ```
