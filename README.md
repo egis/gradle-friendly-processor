@@ -2,7 +2,7 @@
 
 ---
 
-Compile and pack the plugin with Gradle:
+Compile and pack ```deprivatizer``` with Gradle:
 
 ```sh
 gradle build
@@ -24,7 +24,7 @@ dependencies {
 
 ---
 
-Compile and pack the plugin with Ant:
+Compile and pack ```deprivatizer``` with Ant:
 ```sh
 cd deprivatizer
 ant
@@ -47,22 +47,26 @@ To use the plugin with Ant, copy ```deprivatizer.jar``` to a convenient location
 
 ---
 
-Compile and pack the plugin only with shell and JDK tools:
+Compile and pack ```deprivatizer``` with shell and JDK tools:
 
 ```sh
-
 # first delete .DS_Store files if you're on a Mac
 find . -name .DS_Store -delete
-
-mkdir jar
-cp -r src/main/resources/META-INF jar
-javac -cp $JAVA_HOME/lib/tools.jar -sourcepath src/main/java -d jar src/main/java/com/example/deprivatizer/Deprivatizer.java
-jar cf deprivatizer.jar -C jar .
 ```
 
-Use the plugin only with shell and JDK tools:
+```
+cd deprivatizer
+mkdir -p build/jar
+cp -r src/main/resources/META-INF build/jar
+javac -cp "$JAVA_HOME/lib/tools.jar" -sourcepath src/main/java -d build/jar src/main/java/com/example/deprivatizer/Deprivatizer.java
+jar cf deprivatizer.jar -C build/jar .
+```
+
+Run ```deprivatizer-test``` with shell and JDK tools:
 
 ```sh
-javac -cp deprivatizer.jar -sourcepath src/test/java -d target/classes src/test/java/Test.java
-java -cp target/classes Test
+cd deprivatizer-test
+mkdir -p build/classes/main
+javac -cp ../deprivatizer/deprivatizer.jar -sourcepath src/main/java -d build/classes/main src/main/java/Test.java
+java -cp build/classes/main Test
 ```
