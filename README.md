@@ -6,6 +6,12 @@ Compile and pack the plugin with Gradle:
 gradle build
 ```
 
+Run ```deprivatizer-test``` with Gradle:
+
+```sh
+gradle run
+```
+
 To use the plugin with Gradle, make ```deprivatizer``` a sibling project and add the following to ```build.gradle``` of your project:
 
 ```gradle
