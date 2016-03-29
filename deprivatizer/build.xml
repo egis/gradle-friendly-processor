@@ -27,7 +27,7 @@
       <fileset dir="${classes}" />
       <!-- We can use either Ant's <service> or the file in src/main/resources we need for Gradle. -->
       <!-- fileset dir="src/main/resources" /-->
-      <service type="javax.annotation.processing.Processor" provider="com.example.deprivatizer.Deprivatizer" />
+      <service type="javax.annotation.processing.Processor" provider="com.egis.deprivatizer.Deprivatizer" />
       </jar>
   </target>
 

@@ -64,7 +64,7 @@ find . -name .DS_Store -delete
 cd deprivatizer
 mkdir -p build/jar
 cp -r src/main/resources/META-INF build/jar
-javac -cp "$JAVA_HOME/lib/tools.jar" -sourcepath src/main/java -d build/jar src/main/java/com/example/deprivatizer/Deprivatizer.java
+javac -cp "$JAVA_HOME/lib/tools.jar" -sourcepath src/main/java -d build/jar src/main/java/com/egis/deprivatizer/Deprivatizer.java
 jar cf build/libs/deprivatizer.jar -C build/jar .
 ```
 

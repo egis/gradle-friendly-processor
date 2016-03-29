@@ -1,4 +1,4 @@
-package com.example.deprivatizer;
+package com.egis.deprivatizer;
 
 import java.util.Set;
 import java.util.HashSet;
